@@ -27,10 +27,13 @@
 
 - name: Update pip
   pip:
-    name: pip
+    name: "{{ item }}"
     executable: "{{ python_pip_bin }}"
     state: latest
   when: install_python
+  with_items:
+    - pip
+    - setuptools
   tags:
     - python-libs
 
@@ -46,10 +49,13 @@
 
 - name: Update pip
   pip:
-    name: pip
+    name: "{{ item }}"
     executable: "{{ python3_pip_bin }}"
     state: latest
   when: install_python
+  with_items:
+    - pip
+    - setuptools
   tags:
     - python-libs
 
