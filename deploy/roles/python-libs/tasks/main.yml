@@ -25,6 +25,15 @@
   tags:
     - python-libs
 
+- name: Update pip
+  pip:
+    name: pip
+    executable: "{{ python_pip_bin }}"
+    state: latest
+  when: install_python
+  tags:
+    - python-libs
+
 - name: Install Python packages for 27
   pip:
     name: "{{ python_packages }}"
@@ -34,6 +43,15 @@
   tags:
     - python-libs
     - python-libs2
+
+- name: Update pip
+  pip:
+    name: pip
+    executable: "{{ python3_pip_bin }}"
+    state: latest
+  when: install_python
+  tags:
+    - python-libs
 
 - name: Install Python packages for 35
   pip:
